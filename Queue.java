@@ -41,6 +41,7 @@ public class Queue {
         int val = -1;
         if (!isEmpty()) {
             val = arr[front];
+            
             arr[front++] = 0;
         } else {
             System.out.println("Queue is Empty");
