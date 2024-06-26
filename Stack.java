@@ -62,8 +62,7 @@ public class Stack {
         for (int i = arr.length-1; i >= 0; i--) {
             if (arr[i] != 0) {
               System.out.print("->" +arr[i]);  
-            }
-            
+            } 
         }
         System.out.println();
     }
@@ -71,7 +70,5 @@ public class Stack {
     public boolean isEmpty(){
         return top < 0 ;
     }
-
-
 }
 
