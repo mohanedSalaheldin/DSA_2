@@ -24,7 +24,6 @@ public class Entry {
     }
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "("+this.key+","+this.value+")";
     }
 }
