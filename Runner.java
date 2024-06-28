@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Runner
  */
@@ -28,11 +30,57 @@ public class Runner {
         return swapElements(nums, n+1);
     }
 
-    public static void main(String[] args) {
-        HashTable table = new HashTable(5);
-        table.put(24, "Mohaned");
-        table.put(4, "Salah");
-        table.put(1, "Kalid");
-        System.out.println(table.get(4)); 
+    public static boolean isPalindrome(String s) {
+        int head = 0;
+        int tail = s.length()-1;
+        while (head<tail) {
+            char l = s.charAt(head), r = s.charAt(tail);
+            if (!Character.isLetterOrDigit(l)) {
+                head++;
+            }else if (!Character.isLetterOrDigit(r)) {
+                tail--;
+            }else if (Character.toLowerCase(l) != Character.toLowerCase(r)) {
+                return false;
+            }else{
+                head++;
+                tail--;
+            }
+        }
+        return true;
     }
+
+
+    public static int fib(int n) {
+        if (n == 0 ) {
+            return 0;
+        }else{
+            int[] arr = new int[n+1];
+            arr[0] = 0;
+            arr[1] = 1;
+            for (int i = 2; i < arr.length; i++) {
+                arr[i] = arr[i-1] + arr[i-2];
+            }
+            return  arr[n];
+        }
+    }
+
+public static int maxFrequencyElements(int[] nums) {
+        HashMap<Integer, Integer> frqs = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (frqs.containsKey(nums[i])) {
+                frqs.put(nums[i], (frqs.get(nums[i])+1));
+            }else{
+                frqs.put( nums[i] , 1);
+            }
+        }
+        
+        System.out.println(frqs);
+         return 0;
+    }
+    public static void main(String[] args) {
+        int[] lis= {1,2,2,3,1,4};
+      System.out.println(maxFrequencyElements(lis));
+    }
+
+
 }
