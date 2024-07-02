@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Sorting {
 
     public static void selectionSort(int[] arr) {
@@ -50,6 +52,78 @@ public class Sorting {
         display(arr);
     }
 
+    private static void merge(int[] arr, int low, int mid, int high) {
+        
+        int left = low;
+        int right = mid +1 ;
+        ArrayList<Integer> temp = new ArrayList<>();
+
+        while (left <= mid && right <= high ) {
+            if (arr[left] <= arr[right]) {
+                temp.add(arr[left]);
+                left++;
+            } else {
+                temp.add(arr[right]);
+                right++;
+            }
+        }
+
+        while (left <= mid) {
+            temp.add(arr[left]);
+            left++;
+        }
+
+        while (right <= high) {
+            temp.add(arr[right]);
+            right++;
+        }
+        for (int j = low; j <= high; j++) {
+            arr[j] = temp.get(j - low);
+        }
+    }
+
+    public static void mergeSort(int[] arr, int low,int high) {
+        if (low >= high) {
+            return ;
+        }
+        int mid  = (low + high)/2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid+1, high);
+        merge(arr, low, mid, high);
+        // display(arr);
+    }
+
+    public static void quickSort(int[] arr,int left,int right) {
+        if (left>= right) {
+            return ;
+        }
+        int mid = left + (right - left)/2;
+        int piv = arr[mid];
+        int l = left;
+        int r = right;
+        while (l<=r) {
+            while (arr[l] < piv) {
+                l++;
+            }
+            while (arr[r] > piv) {
+                r--;
+            }
+            if (l <= r) {
+                int temp = arr[l];
+                arr[l] = arr[r];
+                arr[r] = temp;
+                l++;
+                r--;
+            }
+            if (left < r) {
+                quickSort(arr, left, r);
+            }
+            if (right > l) {
+                quickSort(arr, l, right);
+            }
+        }
+    }
+
     private static void display(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " => ");
@@ -59,7 +133,8 @@ public class Sorting {
 
     public static void main(String[] args) {
         // System.out.println("Hello world");
-        int[] lis= {-60, 0, 1, 90, 4};
-        insetionSort(lis);
+        int[] lis= {9, 4, 7, 6, 3, 1, 5};
+        quickSort(lis, 0, lis.length -1);
+        display(lis);
     }
 }
