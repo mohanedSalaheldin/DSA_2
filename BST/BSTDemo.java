@@ -1,6 +1,5 @@
 package BST;
 
-import java.util.*;
 
 public class BSTDemo {
     
