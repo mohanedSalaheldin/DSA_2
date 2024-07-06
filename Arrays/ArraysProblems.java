@@ -95,11 +95,26 @@ public class ArraysProblems {
         System.out.println(max);
         return max;
     }
+
+    public static int singleNumber(int[] nums) {
+        if(nums.length ==1) return nums[0];
+        int res = -1;
+        for(int i=0; i<nums.length; i++){
+            boolean found = false;
+            for(int j=0; j<nums.length; j++){
+                if(nums[i]==nums[j] && i!=j){  
+                    found = true;
+                } 
+            }
+            if(!found) res = nums[i];
+        }
+        return res;
+    }
     public static void main(String[] args) {
-        int[] nums= {1,0,1,1,0,1};
+        int[] nums= {2};
         // int[] nums2= {1, 1, 2, 3, 4};
         
-        findMaxConsecutiveOnes(nums);
+        System.out.println(singleNumber(nums));;
         
     }
 }
