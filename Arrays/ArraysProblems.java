@@ -1,6 +1,7 @@
 package Arrays;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.HashMap;
 
 public class ArraysProblems {
     public boolean check(int[] nums) {
@@ -97,24 +98,43 @@ public class ArraysProblems {
     }
 
     public static int singleNumber(int[] nums) {
-        if(nums.length ==1) return nums[0];
-        int res = -1;
-        for(int i=0; i<nums.length; i++){
-            boolean found = false;
-            for(int j=0; j<nums.length; j++){
-                if(nums[i]==nums[j] && i!=j){  
-                    found = true;
-                } 
-            }
-            if(!found) res = nums[i];
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+           int val = mp.getOrDefault(nums[i], 0);
+           mp.put(nums[i], val+1);
         }
-        return res;
+        for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+    public static int duplicateNumbersXOR(int[] nums) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+           int val = mp.getOrDefault(nums[i], 0);
+           mp.put(nums[i], val+1);
+        }
+        int xor = 0;
+        for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+            if (entry.getValue() ==2) {
+                xor = xor^ entry.getKey();
+            }
+        }
+        // System.out.println(xor);
+        
+        return xor;
     }
     public static void main(String[] args) {
-        int[] nums= {2};
-        // int[] nums2= {1, 1, 2, 3, 4};
-        
-        System.out.println(singleNumber(nums));;
+        // int[] nums= {2};
+        int[] nums2= {2,2,3,2};
+        // int x=  10;
+
+        // int xor = 0;
+        // xor = x^x^x;
+        // System.out.println(xor);
+        System.out.println(singleNumber(nums2));;
         
     }
 }
