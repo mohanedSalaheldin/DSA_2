@@ -1,3 +1,4 @@
+package DSs;
 /**
  * HashTable
  * 1. hashing function

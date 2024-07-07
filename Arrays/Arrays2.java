@@ -20,6 +20,8 @@ public class Arrays2 {
         }
         return maj;
     }
+
+
     public static int mostFrequentEven(int[] nums) {
         if(nums.length==1 && nums[0]%2==0){
             return nums[0];
@@ -72,9 +74,29 @@ public class Arrays2 {
         }
         return maxLen;
     }
+    
+    
+    public static int searchInsert(int[] nums, int target) {
+        int first =0;
+        int last = nums.length-1;
+        while (first<=last) {
+        int mid = first + (last-first )/2;
+        if (nums[mid]==target) {
+                return mid;
+            }else if (nums[mid]< target) {
+                first = mid + 1;
+            }else{
+                last = mid -1;
+            }    
+        }
+        return first;
+       
+    }
+   
+    
     public static void main(String[] args) {
-        int[] arr = {0,1,2,2,4,4,1};
-        System.out.println(mostFrequentEven(arr));
+        int[] arr = {1,3,5,6};
+        System.out.println(searchInsert(arr, 5));
         // System.out.println("Hello World");
     }
 }
