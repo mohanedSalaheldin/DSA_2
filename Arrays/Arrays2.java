@@ -93,10 +93,32 @@ public class Arrays2 {
        
     }
    
-    
+    public static int[] twoSum(int[] nums, int target) {
+        int right = nums.length -1;
+        int left = 0;
+        while (left<right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                return new int[] {left, right};
+            }else if (sum < target){
+                left++;
+            }
+            else right--;
+            
+        }
+        return null;
+    }
+    public void sortColors(int[] nums) {
+        Arrays.sort(nums);
+     }
     public static void main(String[] args) {
-        int[] arr = {1,3,5,6};
-        System.out.println(searchInsert(arr, 5));
+        int[] arr = {2,7,11,15};
+        int[] sol =  (arr, 9);
+        for (int i = 0; i < sol.length; i++) {
+            System.out.println(sol[i]);
+        }
+
+        System.out.println();
         // System.out.println("Hello World");
     }
 }

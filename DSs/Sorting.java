@@ -91,7 +91,6 @@ public class Sorting {
         mergeSort(arr, low, mid);
         mergeSort(arr, mid+1, high);
         merge(arr, low, mid, high);
-        // display(arr);
     }
 
     public static void quickSort(int[] arr,int left,int right) {
