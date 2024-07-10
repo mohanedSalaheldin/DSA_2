@@ -1,8 +1,8 @@
 
 package Arrays;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 public class Arrays2 {
     public static int majorityElement(int[] nums) {
@@ -131,20 +131,6 @@ public class Arrays2 {
         
      }
 
-     public static int maxSubArray(int[] nums) {
-        int maxi = 0; 
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
-            if (sum>maxi) {
-                maxi = sum;
-            }
-            if (sum<0) {
-                sum =0;
-            }
-        }  
-        return maxi;
-     }
 
      public int maxProfit(int[] prices) {
         int prof = 0;
@@ -166,17 +152,22 @@ public class Arrays2 {
         }
         return maxi;
     }
+
+    public static int[] rearrangeArray(int[] nums) {
+
+        return new int[] {};
+    }
     public static void main(String[] args) {
-        // int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
-        int[] prices = {7,1,5,3,6,4};
-        int sol = 0;
-        for (int i = 0; i < prices.length; i++) {
-            for (int j = i; j < prices.length; j++) {
-                int sum = prices[j] - prices[i];
-                sol = Math.max(sol, sum);
-            }
-        }
-        System.out.println(sol);
+        int[] arr = {3,1,-2,-5,2,-4};
+        // int[] prices = {7,1,5,3,6,4};
+        // int sol = 0;
+        // for (int i = 0; i < prices.length; i++) {
+        //     for (int j = i; j < prices.length; j++) {
+        //         int sum = prices[j] - prices[i];
+        //         sol = Math.max(sol, sum);
+        //     }
+        // }
+        System.out.println(rearrangeArray(arr));
         
     }
 }

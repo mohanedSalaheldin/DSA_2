@@ -129,11 +129,6 @@ public class ArraysProblems {
     public static void main(String[] args) {
         // int[] nums= {2};
         int[] nums2= {2,2,3,2};
-        // int x=  10;
-
-        // int xor = 0;
-        // xor = x^x^x;
-        // System.out.println(xor);
         System.out.println(singleNumber(nums2));;
         
     }
