@@ -129,6 +129,7 @@ public class ArraysProblems {
     public static void main(String[] args) {
         // int[] nums= {2};
         int[] nums2= {2,2,3,2};
+        display(nums2);
         System.out.println(singleNumber(nums2));;
         
     }

@@ -154,11 +154,77 @@ public class Arrays2 {
     }
 
     public static int[] rearrangeArray(int[] nums) {
+        int n = nums.length;
 
+        // Define array for storing the ans separately.
+        int[] ans = new int[n];
+
+        // positive elements start from 0 and negative from 1.
+        int posIndex = 0, negIndex = 1;
+        for (int i = 0; i < n; i++) {
+
+            // Fill negative elements in odd indices and inc by 2.
+            if (nums[i] < 0) {
+                if (negIndex < n) {
+                    ans[negIndex] = nums[i];
+                    negIndex += 2;
+                }
+            }
+
+            // Fill positive elements in even indices and inc by 2.
+            else {
+                if (posIndex < n) {
+                    ans[posIndex] = nums[i];
+                    posIndex += 2;
+                }
+            }
+        }
+
+        // return ans;
+
+        
+        display(ans);
         return new int[] {};
     }
+
+    public static void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int breakPoint = -1;
+
+        for (int i = n-2; i >= 0; i--) {
+            if (nums[i]<nums[i+1]) {
+                breakPoint = i;
+                break;
+            }
+        }
+
+        if (breakPoint == -1) {
+            reverse(nums, 0, n-1);
+            return;
+        }
+
+        for (int i = n-1; i >= 0; i--) {
+            if (nums[i]> nums[breakPoint]) {
+                int temp = nums[i];
+                nums[i] = nums[breakPoint];
+                nums[breakPoint] = temp;
+                break;
+            }
+        }
+        reverse(nums, breakPoint+1, n-1);
+    }
+
+    private static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int tmp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = tmp;
+            start++;
+            end--;
+        }
+    }
     public static void main(String[] args) {
-        int[] arr = {3,1,-2,-5,2,-4};
+        int[] arr = {1,1,5};
         // int[] prices = {7,1,5,3,6,4};
         // int sol = 0;
         // for (int i = 0; i < prices.length; i++) {
@@ -167,7 +233,19 @@ public class Arrays2 {
         //         sol = Math.max(sol, sum);
         //     }
         // }
-        System.out.println(rearrangeArray(arr));
+        nextPermutation(arr);
         
     }
+
+
+
+    
+    private static void display(int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " , ");
+        }
+        System.out.println();
+    }
+
+
 }
