@@ -223,8 +223,71 @@ public class Arrays2 {
             end--;
         }
     }
+
+    private static void swap(int i, int j, int[] nums) {
+    int tmp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = tmp;
+    }
+    private static void recurPermute(int index, int[] nums, List<List<Integer>> ans) {
+        if (index == nums.length) {
+            List<Integer> ds = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                ds.add(nums[i]);
+            }
+           if (!ans.contains(ds)) {
+            ans.add(new ArrayList<>(ds));
+           }
+            return ;
+        }
+        for (int i = index; i < nums.length; i++) {
+            swap(index, i, nums);
+            recurPermute(index+1, nums, ans);
+            swap(index, i, nums);
+        }
+        
+    }
+    public static List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        recurPermute(0, nums, res);
+        return res;
+    }
+
+    public static int findLongestConseqSubseq(int arr[], int N){
+        if (N==0) {
+            return 0;
+        }
+	    int maxSubArray =0;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < N; i++) {
+            set.add(arr[i]);
+        }
+        for (Integer cur : set) {
+            if (!set.contains(cur-1)) {
+                int min = cur;
+                int count = 1;
+                while (set.contains(min+1)) {
+                    min++;
+                    count++;
+                }
+                maxSubArray = Math.max(count, maxSubArray);
+
+            }
+        }
+        return maxSubArray;
+	}
+    public static boolean linearSearch(int []a, int num) {
+        int n = a.length; //size of array
+        for (int i = 0; i < n; i++) {
+            if (a[i] == num)
+                return true;
+        }
+        return false;
+    }
+
+
     public static void main(String[] args) {
-        int[] arr = {1,1,5};
+        int[] arr = {2,6,1,9,4,5,3};
         // int[] prices = {7,1,5,3,6,4};
         // int sol = 0;
         // for (int i = 0; i < prices.length; i++) {
@@ -233,7 +296,7 @@ public class Arrays2 {
         //         sol = Math.max(sol, sum);
         //     }
         // }
-        nextPermutation(arr);
+        findLongestConseqSubseq(arr, arr.length);
         
     }
 
