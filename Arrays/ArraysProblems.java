@@ -1,7 +1,6 @@
 package Arrays;
 
 import java.util.*;
-import java.util.HashMap;
 
 public class ArraysProblems {
     public boolean check(int[] nums) {
@@ -126,11 +125,44 @@ public class ArraysProblems {
         
         return xor;
     }
+    public static int subarraySum(int[] nums, int k) {
+        int count =0;
+        int prefixSum =0;
+
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum+= nums[i];
+
+            int removal = prefixSum - k;
+
+            count+= map.getOrDefault(removal, 0);
+
+            map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
+        }
+        return count;  
+    }
+
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = generate(numRows)
+    }
+    public static List<List<Integer>> generateRec(int numRows,int n) {
+        if (numRows==1) {
+            List<List<Integer>> ans = new ArrayList<>();
+            ans.add(Arrays.toList)
+        }
+        List<List<Integer>> ans = new ArrayList<>();
+
+    }
+        
+    
+
+
     public static void main(String[] args) {
         // int[] nums= {2};
-        int[] nums2= {2,2,3,2};
-        display(nums2);
-        System.out.println(singleNumber(nums2));;
+        int[] nums2= {-1,-1,1};
+        // display(nums2);
+        System.out.println(subarraySum(nums2, 1));;
         
     }
 }
