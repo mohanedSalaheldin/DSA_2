@@ -143,17 +143,17 @@ public class ArraysProblems {
         return count;  
     }
 
-    public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> ans = generate(numRows)
-    }
-    public static List<List<Integer>> generateRec(int numRows,int n) {
-        if (numRows==1) {
-            List<List<Integer>> ans = new ArrayList<>();
-            ans.add(Arrays.toList)
-        }
-        List<List<Integer>> ans = new ArrayList<>();
+    // public static List<List<Integer>> generate(int numRows) {
+    //     List<List<Integer>> ans = generate(numRows);
+    // }
+    // public static List<List<Integer>> generateRec(int numRows,int n) {
+    //     if (numRows==1) {
+    //         List<List<Integer>> ans = new ArrayList<>();
+    //         // ans.add(Arrays.toList)
+    //     }
+    //     List<List<Integer>> ans = new ArrayList<>();
 
-    }
+    // }
         
     
 
