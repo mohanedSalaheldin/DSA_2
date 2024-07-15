@@ -23,9 +23,28 @@ public class ArrHard {
         // System.out.println(maj);
         return maj;
     }
+
+    static int findFloor(long arr[], int n, long x) {
+        int f = 0;
+        int l = n-1;
+        int cail =-1;
+        while(f<=l){
+            int mid =(l+f)/2 ;
+            if(arr[mid] == x){
+                return mid;
+            }else if (arr[mid] < x) {
+                
+                f = mid + 1;
+            }else{
+                cail = mid;
+                l = mid - 1;
+            }
+        }
+            return cail; 
+    }
     public static void main(String[] args) {
-        int[] arr = {3,6,3};
-        majorityElement(arr);
+        long[] arr = {1, 5, 8, 15, 19};
+        System.out.println(  findFloor(arr, arr.length,  5));
 
     }
 }
