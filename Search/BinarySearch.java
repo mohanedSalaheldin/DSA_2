@@ -47,9 +47,45 @@ public class BinarySearch {
         return sol;
     }
 
+    // static int count(int[] arr, int n, int x) {
+    //     int low = 0;
+    //     int high = n-1;
+    //     int index = -1;
+    //     while(high>=low){
+    //         int mid = (high+low) / 2;
+    //         if(arr[mid] == x) index = mid ;
+    //         else if(arr[mid] > x) high = mid - 1;
+    //         else low = mid + 1;
+    //     }
+    //     System.out.println(index);
+    //      low = index - 1;
+    //      high = index + 1;
+    //     while ((high < n && low < 0) ) {
+            
+    //     }
+    
+        
+    
+    // }
+    public static int firstBadVersion(int n) {
+        boolean[] nums2= {true, false};
+        int low = 0;
+        int high = n-1;
+        int mid = -1;
+        while (low<= high) {
+            mid = (high+low) / 2;
+            if (nums2[mid]) {
+                low = mid +1;
+            } else {
+                high = mid-1;
+            }
+            
+        }
+        return  mid;
+    }
     public static void main(String[] args) {
-        int[] nums2= {5,7,7,8,8,8,10};
+        boolean[] nums2= {false, true,  false};
         // display(nums2);
-        System.out.println(searchRange(nums2, 8));;
+        System.out.println(firstBadVersion(nums2.length));;
     }
 }
